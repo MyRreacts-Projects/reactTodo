@@ -1,11 +1,30 @@
-@media(max-width:500px){
-    #deletebtn{
-    padding: 8px;
-
-}
 #btnSpan{
     display: flex;
-    position: relative;
-    right: 100px;    
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
+
+#deletebtn,
+#editBtn{
+    min-width: 100px;
+}
+
+/* Mobile Screen */
+@media (max-width: 576px){
+
+    #btnSpan{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #deletebtn,
+    #editBtn{
+        width: 100%;
+    }
+
+    #td{
+        min-width: 150px;
+    }
 }

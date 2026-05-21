@@ -1,75 +1,4 @@
 import React, { useState } from "react";
-// const Todo = ()=>{
-//   const [todoInput,setTodoInput] = useState('');
-//   const [todoArr,setTodoArr] = useState([]);
-//   const [isEdit,setIsEdit] = useState(false);
-//   const [targetIndex,setTargetIndex] = useState('')
-//   //addItem function 
-//   const addItem = ()=>{
-//     todoArr.push(todoInput)
-//     console.log(todoArr)
-//     setTodoInput('')
-//   }
-//   //delete Item function 
-//   const deleteItem = (index)=>{
-//     let todoClone = [...todoArr];
-//     // console.log(todoClone)
-//     todoClone.splice(index,1);
-//     setTodoArr(todoClone)
-//   }
-//   //edit Item function
-//   const editItem = (index,item)=>{
-//     setTargetIndex(index)
-//     setTodoInput(item)
-//     setIsEdit(true)
-    
-//   }
-//   //update Item 
-//   const updateItem = ()=>{
-//     let todoClone = [...todoArr];
-//     todoClone.splice(targetIndex,1,todoInput);
-//     setTodoArr(todoClone);
-//     setTargetIndex('');
-//     setIsEdit(false);
-//     setTodoInput('')
-
-//   }
-//   //cancel update function 
-//   const cancelUpdate = ()=>{
-//     console.log('wok')
-//     setTodoInput('');
-//     setIsEdit(false)
-//   }
-//   //delete all function 
-//   const deleteAll = ()=>{
-//    let todoClone = [...todoArr];
-//    setTodoArr([])
-//   }
-//   return(
-//     <div>
-//       <h1>Todo List</h1>
-//       <input type="text" onChange={(e)=>setTodoInput(e.target.value)} value={todoInput}/>
-//       {
-//         (isEdit)?(<span><button onClick={updateItem}>update Item</button>
-//         <button onClick={cancelUpdate}>cancel update</button></span>): (<span><button onClick={addItem}>add Item</button><button onClick={deleteAll}>delete All</button></span>
-// )
-//       }
-//       <ul>
-//         {
-//           todoArr?.map((item,index)=>{
-//             return(<li key={index}>{item} 
-                //  <button onClick={()=>deleteItem(index)}>delete Item</button>
-                //  <button onClick={()=>editItem(index,item)}>edit Item</button>
-            
-//             </li>)
-//           })
-//         }
-//       </ul>
-//     </div>
-//   )
-// }
-// export default Todo;
-//bootstrap 
 import Swal from 'sweetalert2';
 import './todo.css';
 import {
@@ -186,9 +115,21 @@ export default function Todo() {
                       {/* <td>{new Date().toLocaleTimeString()}</td> */}
                       <td id='td'>
                                         <span id="btnSpan">
-                                           <MDBBtn onClick={()=>deleteItem(index)} color="danger" id='deletebtn'>delete Item</MDBBtn>
-                 <MDBBtn onClick={()=>editItem(index,item)} style={{marginLeft:10}}>edit Item</MDBBtn>
-                                        </span>
+  <MDBBtn
+    onClick={() => deleteItem(index)}
+    color="danger"
+    id="deletebtn"
+  >
+    Delete
+  </MDBBtn>
+
+  <MDBBtn
+    onClick={() => editItem(index, item)}
+    id="editBtn"
+  >
+    Edit
+  </MDBBtn>
+</span>
             
                       </td>
                     </tr>
