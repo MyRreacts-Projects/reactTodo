@@ -58,8 +58,8 @@ import React, { useState } from "react";
 //         {
 //           todoArr?.map((item,index)=>{
 //             return(<li key={index}>{item} 
-//                  <button onClick={()=>deleteItem(index)}>delete Item</button>
-//                  <button onClick={()=>editItem(index,item)}>edit Item</button>
+                //  <button onClick={()=>deleteItem(index)}>delete Item</button>
+                //  <button onClick={()=>editItem(index,item)}>edit Item</button>
             
 //             </li>)
 //           })
@@ -70,6 +70,7 @@ import React, { useState } from "react";
 // }
 // export default Todo;
 //bootstrap 
+import Swal from 'sweetalert2'
 import {
   MDBBtn,
   MDBCard,
@@ -90,6 +91,10 @@ export default function Todo() {
   const [targetIndex,setTargetIndex] = useState('')
   //addItem function 
   const addItem = ()=>{
+    if(todoInput == ''){
+      Swal.fire("Enter data!");
+      return;
+    }
     todoArr.push(todoInput)
     console.log(todoArr)
     setTodoInput('')
@@ -143,20 +148,17 @@ export default function Todo() {
                       label="Enter a task here"
                       id="form1"
                       type="text"
+                      onChange={(e)=>setTodoInput(e.target.value)} value={todoInput}
                     />
                   </MDBCol>
                   <MDBCol size="12">
-                    <MDBBtn>{
-        (isEdit)?(<span><button onClick={updateItem}>update Item</button>
-        <button onClick={cancelUpdate}>cancel update</button></span>): (<span><button onClick={addItem}>add Item</button><button onClick={deleteAll}>delete All</button></span>
+                    {
+        (isEdit)?(<span><MDBBtn onClick={updateItem}>update Item</MDBBtn>
+        <MDBBtn color="danger" onClick={cancelUpdate}>cancel update</MDBBtn></span>): (<span><MDBBtn onClick={addItem}>add Item</MDBBtn><MDBBtn color="danger" onClick={deleteAll} style={{marginLeft:10}}>delete All</MDBBtn></span>
 )
-      }</MDBBtn>
+      }
                   </MDBCol>
-                  <MDBCol size="12">
-                    <MDBBtn type="submit" color="warning">
-                      Get tasks
-                    </MDBBtn>
-                  </MDBCol>
+                  
                 </MDBRow>
                 <MDBTable className="mb-4">
                   <MDBTableHead>
@@ -168,48 +170,24 @@ export default function Todo() {
                     </tr>
                   </MDBTableHead>
                   <MDBTableBody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Buy groceries for next week</td>
-                      <td>In progress</td>
+                    {
+                      todoArr?.map((item,index)=>{
+                        return(
+                           <tr key={index}>
+                      <th scope="row">{index + 1}</th>
+                      <td>{item}</td>
+                      <td>{new Date().toLocaleTimeString()}</td>
                       <td>
-                        <MDBBtn type="submit" color="danger">
-                          Delete
-                        </MDBBtn>
-
-                        <MDBBtn type="submit" color="success" className="ms-1">
-                          Finished
-                        </MDBBtn>
+                                         <MDBBtn onClick={()=>deleteItem(index)} color="danger">delete Item</MDBBtn>
+                 <MDBBtn onClick={()=>editItem(index,item)} style={{marginLeft:10}}>edit Item</MDBBtn>
+            
                       </td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Renew car insurance</td>
-                      <td>In progress</td>
-                      <td>
-                        <MDBBtn type="submit" color="danger">
-                          Delete
-                        </MDBBtn>
-
-                        <MDBBtn type="submit" color="success" className="ms-1">
-                          Finished
-                        </MDBBtn>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Sign up for online course</td>
-                      <td>In progress</td>
-                      <td>
-                        <MDBBtn type="submit" color="danger">
-                          Delete
-                        </MDBBtn>
-
-                        <MDBBtn type="submit" color="success" className="ms-1">
-                          Finished
-                        </MDBBtn>
-                      </td>
-                    </tr>
+                        )
+                      })
+                    }
+                   
+                    
                   </MDBTableBody>
                 </MDBTable>
               </MDBCardBody>
