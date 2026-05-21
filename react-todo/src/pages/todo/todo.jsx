@@ -161,7 +161,9 @@ export default function Todo() {
                   
                 </MDBRow>
                 <MDBTable className="mb-4">
-                  <MDBTableHead>
+                  {
+                    todoArr.length > 0 && 
+                    <MDBTableHead>
                     <tr>
                       <th scope="col">No.</th>
                       <th scope="col">Todo item</th>
@@ -169,6 +171,8 @@ export default function Todo() {
                       <th scope="col">Actions</th>
                     </tr>
                   </MDBTableHead>
+                  }
+                  
                   <MDBTableBody>
                     {
                       todoArr?.map((item,index)=>{
