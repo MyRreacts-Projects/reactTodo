@@ -154,7 +154,7 @@ export default function Todo() {
                   <MDBCol size="12">
                     {
         (isEdit)?(<span><MDBBtn onClick={updateItem}>update Item</MDBBtn>
-        <MDBBtn color="danger" onClick={cancelUpdate}>cancel update</MDBBtn></span>): (<span><MDBBtn onClick={addItem}>add Item</MDBBtn>{
+        <MDBBtn color="danger" onClick={cancelUpdate} style={{marginLeft:10}}>cancel update</MDBBtn></span>): (<span><MDBBtn onClick={addItem}>add Item</MDBBtn>{
           todoArr.length > 1 && <MDBBtn color="danger" onClick={deleteAll} style={{marginLeft:10}}>delete All</MDBBtn>
         }</span>
 )
@@ -169,7 +169,7 @@ export default function Todo() {
                     <tr>
                       <th scope="col">No.</th>
                       <th scope="col">Todo item</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Time</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </MDBTableHead>
