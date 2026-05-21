@@ -99,7 +99,7 @@ export default function Todo() {
                     <tr>
                       <th scope="col">No.</th>
                       <th scope="col">Todo item</th>
-                      {/* <th scope="col">Time</th> */}
+                      <th scope="col">Time</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </MDBTableHead>
@@ -112,7 +112,7 @@ export default function Todo() {
                            <tr key={index}>
                       <th scope="row">{index + 1}</th>
                       <td>{item}</td>
-                      {/* <td>{new Date().toLocaleTimeString()}</td> */}
+                      <td>{new Date().toLocaleTimeString()}</td>
                       <td id='td'>
                                         <span id="btnSpan">
   <MDBBtn
@@ -125,7 +125,7 @@ export default function Todo() {
 
   <MDBBtn
     onClick={() => editItem(index, item)}
-    id="editBtn"
+    id="editBtn" style={{marginLeft:10}}
   >
     Edit
   </MDBBtn>
