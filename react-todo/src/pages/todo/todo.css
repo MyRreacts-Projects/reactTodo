@@ -1,0 +1,11 @@
+@media(max-width:500px){
+    #deletebtn{
+    padding: 8px;
+
+}
+#btnSpan{
+    display: flex;
+    position: relative;
+    right: 100px;    
+}
+}

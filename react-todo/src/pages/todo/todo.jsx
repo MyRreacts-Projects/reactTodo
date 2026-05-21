@@ -70,7 +70,8 @@ import React, { useState } from "react";
 // }
 // export default Todo;
 //bootstrap 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import './todo.css';
 import {
   MDBBtn,
   MDBCard,
@@ -141,7 +142,7 @@ export default function Todo() {
           <MDBCol lg="9" xl="7">
             <MDBCard className="rounded-3">
               <MDBCardBody className="p-4">
-                <h4 className="text-center my-3 pb-3">To Do App</h4>
+                <h4 className="text-center my-3 pb-3" style={{fontSize:30,fontWeight:"bold",marginRight:40}}>To Do App</h4>
                 <MDBRow className="row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                   <MDBCol size="12">
                     <MDBInput
@@ -169,7 +170,7 @@ export default function Todo() {
                     <tr>
                       <th scope="col">No.</th>
                       <th scope="col">Todo item</th>
-                      <th scope="col">Time</th>
+                      {/* <th scope="col">Time</th> */}
                       <th scope="col">Actions</th>
                     </tr>
                   </MDBTableHead>
@@ -182,10 +183,12 @@ export default function Todo() {
                            <tr key={index}>
                       <th scope="row">{index + 1}</th>
                       <td>{item}</td>
-                      <td>{new Date().toLocaleTimeString()}</td>
-                      <td>
-                                         <MDBBtn onClick={()=>deleteItem(index)} color="danger">delete Item</MDBBtn>
+                      {/* <td>{new Date().toLocaleTimeString()}</td> */}
+                      <td id='td'>
+                                        <span id="btnSpan">
+                                           <MDBBtn onClick={()=>deleteItem(index)} color="danger" id='deletebtn'>delete Item</MDBBtn>
                  <MDBBtn onClick={()=>editItem(index,item)} style={{marginLeft:10}}>edit Item</MDBBtn>
+                                        </span>
             
                       </td>
                     </tr>
